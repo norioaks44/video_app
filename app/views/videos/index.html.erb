@@ -1,7 +1,9 @@
-    <% @videos.each do |video| %>
-        <li class='list'>
-          <%= link_to video_path(video.id), method: :get do %>
-            <%= video.title %>
-          <% end %>
-        </li>
-        <% end %>
+<% @videos.each do |video| %>
+  <li class='list'>
+    <%= link_to video_path(video.id), method: :get do %>
+      <%= video.title %>
+    <% end %>
+  </li>
+<% end %>
+
+<%= link_to '登録する' , new_video_path %>
