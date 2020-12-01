@@ -1,0 +1,7 @@
+    <% @videos.each do |video| %>
+        <li class='list'>
+          <%= link_to video_path(video.id), method: :get do %>
+            <%= video.title %>
+          <% end %>
+        </li>
+        <% end %>
