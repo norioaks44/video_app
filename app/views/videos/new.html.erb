@@ -1,6 +1,8 @@
-<%= form_with model: @video, local: true do |form| %>
+<%= form_with model: @video, url: videos_path, local: true do |form| %>
   <p>title</p><%= form.text_field :title %> <br>
   <p>introduction</p><%= form.text_area :introduction %><br>
   <p>video</p><%= form.file_field :video %><br>
+  <p>title</p><%= form.text_field :name, class:"input-tag" %><br>
+  <br>
   <%= form.submit%>
 <% end %>

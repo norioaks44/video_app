@@ -6,11 +6,11 @@ class VideosController < ApplicationController
   end
 
   def new
-    @video = VideoTag.new
+    @video = VideosTag.new
   end
 
   def create
-    @video = VideoTag.new(video_params)
+    @video = VideosTag.new(video_params)
     if @video.valid?
       @video.save
       redirect_to root_path
@@ -28,4 +28,5 @@ class VideosController < ApplicationController
   def video_params
     params.require(:videos_tag).permit(:title, :introduction, :video, :name)
   end
+
 end
