@@ -11,8 +11,11 @@
     <%= form.label :introduction, "introduction"%>
     <%= form.text_area :introduction, class:"input-form" %>
   </div>
+
+  <%= form.label :image, "image(jpg, png, gif)"%>
+  <%= form.file_field :image %>
   
-  <%= form.label :video, "video"%>
+  <%= form.label :video, "video(mp4, mov)"%>
   <%= form.file_field :video %>
 
   <div class="tag-field", id='tag-field'>
