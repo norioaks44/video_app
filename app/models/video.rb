@@ -1,7 +1,9 @@
 class Video < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :position
+
   has_one_attached :video
   has_one_attached :image
-  # has_many_attached :videos
 
   
   has_many :video_tag_relations

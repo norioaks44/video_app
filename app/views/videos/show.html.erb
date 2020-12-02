@@ -1,5 +1,6 @@
   <p><%= @video.title %></p> <br>
   <p><%= @video.introduction %></p>
+  <p>対象：<%= @video.position.name %></p>
 
 <% if @video.image.attached? %>
   <img src="<%= rails_blob_path(@video.image) %>">

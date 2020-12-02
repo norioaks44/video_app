@@ -1,10 +1,17 @@
 <%= form_with model: @video, url: videos_path, class:'form-wrap', local: true do |form| %>
+  <%= render 'shared/error_messages', model: form.object %> 
+
 
 <div class='page-form'>
 
   <div class='page-field'>
     <%= form.label :title, "title"%>
     <%= form.text_field :title, class:"input-form" %>
+  </div>
+
+  <div>
+    <%= form.label :position_id, "対象ポジション"%>
+    <%= form.collection_select(:position_id, Position.all, :id, :name, {}, {class:"select"}) %>
   </div>
   
   <div class='page-field'>

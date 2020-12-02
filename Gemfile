@@ -59,3 +59,5 @@ gem 'image_processing', '~> 1.2'
 gem 'pry-rails'
 
 gem 'file_validators'
+
+gem 'active_hash'
