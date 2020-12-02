@@ -6,13 +6,23 @@ class VideosController < ApplicationController
   end
 
   def new
-    @video = Video.new
+    @video = VideosTag.new
   end
 
   def create
-    @video = Video.new(video_params)
-    @video.save
-    redirect_to root_path
+    @video = VideosTag.new(video_params)
+    if @video.valid?
+      @video.save
+      redirect_to root_path
+    else
+      render "new"
+    end
+  end
+
+  def search
+    return nil if params[:keyword] == ""
+    tag = Tag.where( ['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json: { keyword: tag }
   end
 
   def show
@@ -22,6 +32,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :introduction, :video)
+    params.require(:videos_tag).permit(:title, :introduction, :video, :name)
   end
+
 end
