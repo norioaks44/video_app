@@ -1,8 +1,31 @@
-<%= form_with model: @video, url: videos_path, local: true do |form| %>
-  <p>title</p><%= form.text_field :title %> <br>
-  <p>introduction</p><%= form.text_area :introduction %><br>
-  <p>video</p><%= form.file_field :video %><br>
-  <p>title</p><%= form.text_field :name, class:"input-tag" %><br>
-  <br>
-  <%= form.submit%>
+<%= form_with model: @video, url: videos_path, class:'form-wrap', local: true do |form| %>
+
+<div class='page-form'>
+
+  <div class='page-field'>
+    <%= form.label :title, "title"%>
+    <%= form.text_field :title, class:"input-form" %>
+  </div>
+  
+  <div class='page-field'>
+    <%= form.label :introduction, "introduction"%>
+    <%= form.text_area :introduction, class:"input-form" %>
+  </div>
+  
+  <%= form.label :video, "video"%>
+  <%= form.file_field :video %>
+
+  <div class="tag-field", id='tag-field'>
+    <%= form.label :name, "タグ" %>
+    <%= form.text_field :name, class:"input-tag" %>
+  </div>
+  <div id="search-result">
+  </div>
+
+</div>
+  
+  <div class="submit-post">
+    <%= form.submit '登録' ,class:"submit-btn" %>
+  </div>
+
 <% end %>
