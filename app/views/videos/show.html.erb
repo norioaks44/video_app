@@ -1,13 +1,10 @@
   <p><%= @video.title %></p> <br>
   <p><%= @video.introduction %></p>
 
+<% if @video.image.attached? %>
+  <img src="<%= rails_blob_path(@video.image) %>">
+<% end %>
+
 <% if @video.video.attached? %>
-
-  <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls class="video-size" >
-  </video>
-
-  <%# こちらでも可能 %>
-  <%# <%= video_tag rails_blob_path(@video.video, disposition: "attachment"),class: "video-size", :controls => true %>
-  <%# こちらでも可能 %>
-  
+  <%= video_tag rails_blob_path(@video.video, disposition: "attachment"),class: "video-size", controls: :true %>
 <% end %>
