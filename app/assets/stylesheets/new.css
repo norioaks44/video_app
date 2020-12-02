@@ -23,6 +23,11 @@
   margin-top: 10px;
 }
 
+.select{
+  height: 30px;
+  width: 250px;
+}
+
 .input-form{
   resize: none;
   padding-left: 10px;
