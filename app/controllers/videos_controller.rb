@@ -22,12 +22,21 @@ class VideosController < ApplicationController
 
   def search
     return nil if params[:keyword] == ""
-    tag = Tag.where( ['name LIKE ?', "%#{params[:keyword]}%"] )
+    tag = Tag.where( ['tag_name LIKE ?', "%#{params[:keyword]}%"] )
     render json: { keyword: tag }
   end
 
   def show
     @video = Video.find(params[:id])
+  end
+  
+  def edit
+    # @video = Video.find(params[:id])
+    @video = VideosTag.find
+  end
+
+  def update
+    video = VideosTag.new.update(video_params)
   end
 
   private
