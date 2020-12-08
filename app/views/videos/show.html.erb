@@ -9,8 +9,14 @@
 <% if @video.video.attached? %>
   <%= video_tag rails_blob_path(@video.video, disposition: "attachment"),class: "video-size", controls: :true %>
 <% end %>
+<div>
+  <% @video.tags.each do |tag| %>
+    <%= tag.tag_name %>
+  <% end %>
+</div>
   <div>
-    <%=link_to '編集', edit_video_path(@video.id), class:"back-btn" %>
+    <%=link_to '編集', edit_video_path(@video.id), class:"video-edit-btn" %>
+    <%= link_to '削除する', video_path(@video.id), method: :delete, class: "video-destroy" %>
   </div>
   <div>
     <%=link_to 'もどる', root_path, class:"back-btn" %>

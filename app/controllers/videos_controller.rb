@@ -8,10 +8,9 @@ class VideosController < ApplicationController
   def new
     @video = VideosTag.new
   end
-
+  
   def create
     @video = VideosTag.new(video_params)
-    # binding.pry
     if @video.valid?
       @video.save
       redirect_to root_path
@@ -31,18 +30,45 @@ class VideosController < ApplicationController
   end
   
   def edit
-    # @video = Video.find(params[:id])
-    @video = VideosTag.find
+    @video = Video.find(params[:id])
+    # @tag = @video.tags
   end
-
+  
   def update
-    video = VideosTag.new.update(video_params)
+    @video = Video.find(params[:id])
+    if @video.update(update_params)
+      redirect_to video_path
+    else
+      render :edit
+    end
+    # video = Video.find(params[:id])
+    # tag = video.tags
+    # if video.valid?
+    #   binding.pry 
+    #   video.update(update_params)
+    #   redirect_to video_path
+    # else
+    #   render :edit
+    # end
+  end
+  
+  def destroy
+    @video = Video.find(params[:id])
+    if @video.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
 
   def video_params
     params.require(:videos_tag).permit(:title, :introduction, :video, :image, :position_id, :tag_name)
+  end
+
+  def update_params
+    params.require(:video).permit(:title, :introduction, :video, :image, :position_id, :tag_name)
   end
 
 end

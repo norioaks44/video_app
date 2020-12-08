@@ -9,28 +9,24 @@ class VideosTag
     validates :position_id, numericality: { other_than: 1 } 
   end
 
-    validates :video, file_content_type: {allow: [
-      'video/mp4',
-      'video/mov',
-      'video/quicktime']}
+  validates :video, file_content_type: {allow: [
+    'video/mp4',
+    'video/mov',
+    'video/quicktime']}
 
-    validates :image, file_content_type: { allow: [
-      'image/jpeg', 
-      'image/jpg', 
-      'image/png', 
-      'image/bmp', 
-      'image/gif'
-      ]}
-  
-  def find(id)
-    
-  end
-  
+  validates :image, file_content_type: { allow: [
+    'image/jpeg', 
+    'image/jpg', 
+    'image/png', 
+    'image/bmp', 
+    'image/gif'
+    ]}
+
   def save
     @video = Video.create(title: title, introduction: introduction, video: video, image: image, position_id: position_id)
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
     VideoTagRelation.create(video_id: @video.id, tag_id: tag.id)
   end
-  
+
 end

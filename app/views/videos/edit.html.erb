@@ -1,5 +1,5 @@
-<%= form_with model: @video, url: videos_path, class:'form-wrap', local: true do |form| %>
-  <%= render 'shared/error_messages', model: form.object %> 
+<%= form_with model: @video, url: video_path, class:'form-wrap', local: true do |form| %>
+  <%= render 'shared/error_messages', model: form.object  %>
 
 
 <div class='page-form'>
@@ -25,20 +25,25 @@
   <%= form.label :video, "video(mp4, mov)"%>
   <%= form.file_field :video %>
 
-  <div class="tag-field", id='tag-field'>
-    <%= form.label :tag_name, "タグ" %>
-    <%= form.text_field :tag_name, class:"input-tag" %>
-  </div>
-  <div id="search-result">
-  </div>
+  <%# <div class="tag-field", id='tag-field'> %>
+    <%# <%= form.label :tag_name, "タグ" %> %>
+    <%# <% @tag.each do |t| %> %>
+      <%# <div class="weight-bold-text"> %>
+      <%# タグ（スペースで区切って複数投稿できます） %>
+      <%# <%= form.text_field :tag_name, class:"items-text", id:"item-tag", value:t.tag_name  %> %>
+      <%# </div> %>
+    <%# <%end%> %>
+  <%# </div> %>
+  <%# <div id="search-result"> %>
+  <%# </div> %>
 
 </div>
   
   <div class="submit-post">
-    <%= form.submit '編集' ,class:"submit-btn" %>
+    <%= form.submit '編集',class:"submit-btn" %>
   </div>
   <div>
-    <%=link_to 'もどる', root_path, class:"back-btn" %>
+    <%= link_to 'もどる', root_path, class:"back-btn" %>
   </div>
 
 <% end %>
